@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Forte - Futuro Sustentável</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f172a;
+    color:white;
+    scroll-behavior:smooth;
+    transition:0.4s;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:#020617;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    z-index:999;
+}
+
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') no-repeat center/cover;
+}
+
+.hero h1{
+    font-size:40px;
+    background:rgba(0,0,0,0.6);
+    padding:20px;
+    border-radius:15px;
+    animation:fadeIn 2s;
+}
+
+/* SECTIONS */
+section{
+    padding:80px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+iframe, img{
+    width:100%;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+/* DADOS */
+.stats{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    text-align:center;
+}
+
+.stat{
+    margin:20px;
+}
+
+.stat h2{
+    color:#22c55e;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#020617;
+}
+
+/* BOTÃO */
+#topo{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:none;
+}
+
+/* MODO CLARO */
+.light{
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+.light .card{background:white;}
+.light nav{background:#e2e8f0;}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<div>🌱 Agro Forte</div>
+<div>
+<a href="#sobre">Sobre</a>
+<a href="#tecnologia">Tecnologia</a>
+<a href="#videos">Vídeos</a>
+<a href="#fontes">Fontes</a>
+<button onclick="modo()">🌙</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Agro Forte, Futuro Sustentável</h1>
+</div>
+
+<section id="sobre" class="card">
+<h2>O Poder do Agronegócio</h2>
+<p>
+O agronegócio é essencial para o desenvolvimento do Brasil. Ele garante alimentos, gera empregos
+e impulsiona a economia, sendo um dos setores mais importantes do país.
+</p>
+</section>
+
+<!-- DADOS -->
+<section class="stats">
+<div class="stat">
+<h2>🌾 25%</h2>
+<p>do PIB vem do agro</p>
+</div>
+
+<div class="stat">
+<h2>🚜 +1 bilhão</h2>
+<p>de toneladas produzidas</p>
+</div>
+
+<div class="stat">
+<h2>🌎 100+</h2>
+<p>países atendidos</p>
+</div>
+</section>
+
+<section id="tecnologia" class="card">
+<h2>Tecnologia no Campo</h2>
+<p>
+O uso de drones, inteligência artificial e sensores aumenta a produtividade e reduz impactos ambientais.
+</p>
+
+<iframe src="https://www.youtube.com/embed/8pQ9s0n3Fz4"></iframe>
+</section>
+
+<section id="videos" class="card">
+<h2>Agricultura Sustentável</h2>
+<p>
+Especialistas mostram como produzir respeitando o meio ambiente.
+</p>
+
+<iframe src="https://www.youtube.com/embed/MYtTIkC_UjI"></iframe>
+</section>
+
+<section id="fontes" class="card">
+<h2>Fontes Confiáveis</h2>
+
+<ul>
+<li><a href="https://www.embrapa.br" target="_blank">Embrapa</a></li>
+<li><a href="https://www.canalrural.com.br" target="_blank">Canal Rural</a></li>
+</ul>
+
+<p>
+Conteúdos baseados em pesquisas científicas e especialistas do setor.
+</p>
+</section>
+
+<footer>
+<p>Projeto Agrinho 2026</p>
+</footer>
+
+<button id="topo">⬆</button>
+
+<script>
+// modo claro
+function modo(){
+document.body.classList.toggle("light");
+}
+
+// scroll animação
+const cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+cards.forEach(c=>{
+const top=c.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+c.classList.add("show");
+}
+});
+});
+
+// botão topo
+const topo=document.getElementById("topo");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>300){
+topo.style.display="block";
+}else{
+topo.style.display="none";
+}
+});
+
+topo.onclick=()=>{
+window.scrollTo({top:0,behavior:"smooth"});
+};
+</script>
+
+</body>
+</html>
